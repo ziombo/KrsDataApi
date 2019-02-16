@@ -12,6 +12,8 @@ namespace KrsApiWebsite
 
     using KrsApiIntegration;
 
+    using KrsApiWebsite.Service;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -28,7 +30,8 @@ namespace KrsApiWebsite
 
             // AddTransient overwrites AddHttpClient and messes it up
             services.AddHttpClient<IKrsApiClient, KrsApiClient>();
-            //services.AddTransient<IKrsApiClient, KrsApiClient>();
+            services.AddTransient<IKrsApiService, KrsApiService>();
+            services.AddTransient<IKrsDataService, KrsDataService>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

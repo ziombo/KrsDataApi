@@ -12,6 +12,8 @@ namespace KrsApiWebsite.Controllers
     using Microsoft.AspNetCore.Authorization;
     using System.IO;
 
+    using KrsApiWebsite.Service;
+
     using Newtonsoft.Json.Linq;
 
     [Route("api/[controller]")]
@@ -19,49 +21,17 @@ namespace KrsApiWebsite.Controllers
     [Consumes("application/json", "multipart/form-data")]
     public class KrsDataController : ControllerBase
     {
-        private readonly IKrsApiClient _krsApiClient;
+        private readonly IKrsDataService _krsDataService;
 
-        public KrsDataController(IKrsApiClient krsApiClient)
+        public KrsDataController(IKrsDataService krsDataClient)
         {
-            this._krsApiClient = krsApiClient;
-        }
-
-        [HttpGet]
-        public async Task<JObject> Get(string krsNumber)
-        {
-            return await this._krsApiClient.GetCompanyData(krsNumber);
+            this._krsDataService = krsDataClient;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(IFormFile file)
         {
-            string fileContent = String.Empty;
-            using (var reader = new StreamReader(file.OpenReadStream()))
-            {
-                fileContent = await reader.ReadToEndAsync();
-            }
-
-            if (String.IsNullOrEmpty(fileContent))
-            {
-                return this.BadRequest();
-            }
-
-            IEnumerable<string> krsNumbers = fileContent.Split(';');
-
-            var companiesData = new List<JObject>();
-            var companies = new List<Company>();
-            foreach (var krsNumber in krsNumbers)
-            {
-                var company = await this._krsApiClient.GetCompanyData(krsNumber);
-                companiesData.Add(company);
-                
-                var companyDTO = new Company();
-                companyDTO.Krs = company["Dataobject"][0]["data"]["krs_podmioty.krs"].ToString();
-                companyDTO.Name = company["Dataobject"][0]["data"]["krs_podmioty.nazwa"].ToString();
-                companies.Add(companyDTO);
-            }
-
-            return this.Ok(companies);
+            return this.File((await this._krsDataService.GetCompaniesExcelData(file)).GetAsByteArray(), "application/octet-stream");
         }
     }
 }
