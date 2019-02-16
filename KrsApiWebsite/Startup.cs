@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KrsApiWebsite
 {
+    using System;
+    using System.Runtime.InteropServices;
+
+    using KrsApiIntegration;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -21,6 +25,10 @@ namespace KrsApiWebsite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // AddTransient overwrites AddHttpClient and messes it up
+            services.AddHttpClient<IKrsApiClient, KrsApiClient>();
+            //services.AddTransient<IKrsApiClient, KrsApiClient>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

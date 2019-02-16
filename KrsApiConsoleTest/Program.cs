@@ -8,9 +8,9 @@ namespace KrsApiConsoleTest
     {
         static void Main(string[] args)
         {
-            var x = new KrsApiClient();
-            x.GetCompanyData("0000140193");
-            Console.ReadKey();
+            //var x = new KrsApiClient();
+            //x.GetCompanyData("0000140193");
+            //Console.ReadKey();
         }
     }
 }
