@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrsApiIntegration", "KrsApiIntegration\KrsApiIntegration.csproj", "{6B3595E2-3F4C-4236-B5E8-AC9C146AFCAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B3595E2-3F4C-4236-B5E8-AC9C146AFCAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3595E2-3F4C-4236-B5E8-AC9C146AFCAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3595E2-3F4C-4236-B5E8-AC9C146AFCAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3595E2-3F4C-4236-B5E8-AC9C146AFCAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6910F7D1-D043-40F3-91F7-97E2ADAD54F4}
+	EndGlobalSection
+EndGlobal
