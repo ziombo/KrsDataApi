@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KrsApiWebsite.Service
+namespace KrsDataApi.Service
 {
     using KrsApiIntegration;
 

@@ -10,6 +10,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <UserSecretsId>8e289484-b59f-419d-9e74-c32b6842ba72</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +29,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KrsApiIntegration\KrsApiIntegration.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\package.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using KrsDataApi.Service;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace KrsApiWebsite.Controllers
+namespace KrsDataApi.Controllers
 {
-
-    using KrsApiWebsite.Service;
-
     [Route("api/[controller]")]
     [ApiController]
     [Consumes("application/json", "multipart/form-data")]
