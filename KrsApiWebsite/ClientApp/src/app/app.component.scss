@@ -1,0 +1,18 @@
+.file-upload-area{
+  height: 350px;
+  min-width: 450px;
+  border: rgba(143, 143, 140, 0.71) 3px dashed;
+  cursor: pointer;
+}
+
+.cloud-upload-icon{
+  color: rgba(143, 143, 140, 0.71);
+}
+
+.active{
+  border-color: rgba(3, 133, 5, 0.71);
+}
+
+.active fa-icon{
+  color: rgba(3, 133, 5, 0.71);
+}
